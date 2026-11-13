@@ -11,5 +11,13 @@
     "library": false,
     "corner": "top-right",
     "toggleHotkey": "Ctrl+Shift+L"
+  },
+  "trade": {
+    "enabled": true,
+    "autoSearch": true,
+    "status": "available",
+    "rangePercent": 10,
+    "maxWaitSec": 10,
+    "debounceMs": 350
   }
 }

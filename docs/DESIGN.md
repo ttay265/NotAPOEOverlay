@@ -52,7 +52,7 @@ Grinding Gear Games' rules for third-party tools, as applied by the community to
 1. **Now:** clipboard price check and campaign leveling helper (this prototype).
 2. Pin to the game window, single-hotkey price check (`electron-overlay-window`, `uiohook-napi`).
 3. Trade helper: `Client.txt` watcher, whisper queue with price sanity check, one-key invite / trade / thank, stash cell highlight, notifications while idle.
-4. Rare item pricing through the official trade API (mod parsing, rate-limit handling).
+4. ~~Rare item pricing through the official trade API (mod parsing, rate-limit handling).~~ Done: mod picker + rate-limited client in `src/trade/`. Next: weapon DPS and defence filters.
 5. Stash reader through the official OAuth API (needs an app registration with GGG) for stash valuation and layout suggestions.
 6. Controller mapping layer.
 
@@ -80,7 +80,8 @@ current instance; showing the real exit would need screen reading, which can com
 ## 7. Known gaps in this prototype
 
 - Not run against live poe.ninja yet: the build environment could not reach poe.ninja, so pricing was tested with saved sample responses in poe.ninja's format. If poe.ninja changes its API paths, edit `baseUrl` in `src/pricing.js`.
-- Magic items: the base type is not separated from affixes, so they are not priced.
+- Magic items: the base type is not separated from affixes, so poe.ninja does not price them; the trade search uses the category instead.
+- Trade price check: not run against the live trade API yet (the build environment cannot reach pathofexile.com). Rate limiting, queueing and caching are unit-tested against fake responses in the documented header format. Weapon DPS / armour totals, influence and empty-affix filters from APT are not ported yet.
 - Unique variants (for example different versions of the same unique) take the first match.
 - Not tested on Windows yet; built and screenshot-tested on Linux with Electron 33.
 - Leveling helper: tested with a sample Client.txt in the documented line format, not yet against a live game log.
