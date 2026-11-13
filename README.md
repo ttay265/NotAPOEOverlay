@@ -8,6 +8,36 @@ The price-check overlay: Hover an item in game and press **Ctrl+C** (the game's 
 The overlay reads the copied item text, looks up its price on poe.ninja, and shows a small panel
 next to your mouse. It never sends keys or clicks to the game.
 
+### Rare items: pick mods and search the official trade site
+
+Rare, magic and unique gear gets a mod list, the same idea as Awakened PoE Trade:
+
+- Each mod has a checkbox and editable **min / max** boxes. Scroll the mouse wheel over a box to
+  change it (Shift = steps of 10), or click into it to type. **Enter** searches, **Esc** closes.
+- Pseudo totals (**P**) add up resistances, life (including Strength), attributes and so on across
+  all mods and the implicit, like the trade site's "pseudo" stats. Total elemental resistance,
+  total life and chaos resistance start ticked; everything else is your choice.
+- Defaults start 10% below your roll (`trade.rangePercent`). Copy with **Ctrl+Alt+C** to also get
+  roll ranges and tiers in the list.
+- Options under the list: same base type, item level, links, online only.
+- On copy, one search runs with the default ticks (when any are ticked). After that, a search only
+  runs when you press **Search**. Results show the median and cheapest of the 10 cheapest listings
+  (converted to chaos with poe.ninja rates), each listing's price, item level, age and seller
+  status. **Load 10 more** fetches the next page. **Open trade site** opens the same search in your browser.
+
+How it avoids getting you blocked by the trade API:
+
+- It reads the `X-Rate-Limit-*` headers on every response and keeps its own count of each limit,
+  so it never sends a request that would go over one. Until it has seen the headers it allows only
+  one request per 5 seconds.
+- Requests wait in a queue, one at a time. If the wait would be over 10 seconds (`trade.maxWaitSec`),
+  it shows "try again in N s" instead of queueing.
+- On HTTP 429 it stops all requests until the `Retry-After` time has passed.
+- Copying several items quickly only searches the last one (350 ms debounce), and a queued search
+  for an item you have moved on from is dropped before it is sent.
+- The same search within 5 minutes comes from cache, and the Search button ignores presses while a
+  search is running and more than one per second.
+
 ## Run it on Windows
 
 1. Install Node.js 20 or newer from https://nodejs.org.
@@ -88,7 +118,7 @@ This is the quickest way to see whether poe.ninja lookups work for your league.
 | Unique items | by name and base, using the 5-link or 6-link price when linked |
 | Skill gems | by name and corruption, closest level then quality |
 | Maps | by base and tier |
-| Rare and magic items | not priced; use "Search trade site" |
+| Rare, magic and unique gear | official trade API with the mods you tick (see above) |
 
 Prices with fewer than 5 listings on poe.ninja are flagged as unreliable.
 
@@ -101,6 +131,11 @@ Prices with fewer than 5 listings on poe.ninja are flagged as unreliable.
 - `src/parser.js` reads the clipboard item text.
 - `src/pricing.js` fetches and caches poe.ninja data (30 minutes) and matches items.
 - `src/main.js` is the Electron overlay: clipboard watch, window, hotkey.
+- `src/trade/` is the trade API price check: `mods.js` (mod text to trade stat ids), `filters.js`
+  (pseudo totals and default min/max), `query.js` (search body), `ratelimit.js` and `client.js`
+  (rate limits, queue, cache), `pricecheck.js` (ties it together).
+- `data/trade/stats.ndjson` is the stat translation table from Awakened PoE Trade (MIT, see
+  `data/trade/LICENSE-awakened-poe-trade`). Copy a newer one from APT after a big patch.
 - `renderer/` is the panel UI.
 - `src/leveling/` is the leveling helper: `clientlog.js` (Client.txt reader), `route.js` (route parser),
   `tracker.js` (follows your position), `passives.js`, `zonetips.js`, `window.js` (panel window).

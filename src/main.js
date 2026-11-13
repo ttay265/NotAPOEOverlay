@@ -4,12 +4,14 @@
 // We watch the clipboard, parse the item, look up poe.ninja, and show a small
 // click-through-free, non-focusable panel near the mouse. No input is ever sent to the game.
 
-const { app, BrowserWindow, clipboard, screen, globalShortcut, ipcMain, shell } = require('electron');
+const { app, BrowserWindow, clipboard, screen, globalShortcut, ipcMain, shell, net } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const { parseItem } = require('./parser');
 const { PriceService, tradeSearchUrl } = require('./pricing');
 const { setupLeveling } = require('./leveling/window');
+const { TradePriceCheck } = require('./trade/pricecheck');
+const { TradeClient, StaleError } = require('./trade/client');
 
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
 const config = Object.assign(
@@ -17,14 +19,30 @@ const config = Object.assign(
   JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf8'))
 );
 const prices = new PriceService({ league: config.league });
+const tradeCfg = Object.assign(
+  { enabled: true, autoSearch: true, status: 'available', rangePercent: 10, maxWaitSec: 10, debounceMs: 350 },
+  config.trade || {}
+);
+// Electron's net.fetch uses Chromium's network stack and the app session (cookies),
+// which is what the trade site's Cloudflare front expects (same approach as Awakened PoE Trade).
+const trade = new TradePriceCheck({
+  league: config.league,
+  prices,
+  status: tradeCfg.status,
+  rangePercent: tradeCfg.rangePercent,
+  client: new TradeClient({ fetchImpl: (url, init) => net.fetch(url, init), maxWaitMs: tradeCfg.maxWaitSec * 1000 }),
+});
+const WIDTH = { basic: 340, trade: 440 };
 
 let win;
 let lastClip = '';
 let hideTimer;
+let autoSearchTimer;
+let busy = false; // a trade request is running: keep the panel open
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 340, height: 220, show: false, frame: false, transparent: true,
+    width: WIDTH.basic, height: 220, show: false, frame: false, transparent: true,
     resizable: false, skipTaskbar: true, focusable: false, alwaysOnTop: true,
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true },
   });
@@ -42,21 +60,83 @@ function showNearCursor() {
   const y = Math.min(Math.max(p.y - h / 2, area.y), area.y + area.height - h);
   win.setPosition(Math.round(x), Math.round(y));
   win.showInactive(); // never take focus from the game
+  armHide();
+}
+
+function armHide() {
   clearTimeout(hideTimer);
-  hideTimer = setTimeout(() => win.hide(), config.hideAfterMs);
+  hideTimer = setTimeout(() => { if (!busy) hidePanel(); else armHide(); }, config.hideAfterMs);
+}
+
+function hidePanel() {
+  clearTimeout(hideTimer);
+  win.hide();
+  win.setFocusable(false); // hand focus back to the game
+}
+
+// Keep the panel inside the screen when its content grows (mod list, results).
+function resizePanel(width, height) {
+  const [x, y] = win.getPosition();
+  const area = screen.getDisplayNearestPoint({ x, y }).workArea;
+  const h = Math.min(Math.max(120, Math.ceil(height)), area.height);
+  const w = width;
+  win.setBounds({
+    x: Math.min(x, area.x + area.width - w),
+    y: Math.min(Math.max(y, area.y), area.y + area.height - h),
+    width: w,
+    height: h,
+  });
 }
 
 async function onClipboard(text) {
   const item = parseItem(text);
   if (!item) return;
+  clearTimeout(autoSearchTimer);
+  trade.cancel();
   const tradeUrl = tradeSearchUrl(item, config.league);
-  win.webContents.send('item', { item: strip(item), status: 'loading', tradeUrl, league: config.league });
+  const prep = tradeCfg.enabled && TradePriceCheck.supports(item) ? trade.prepare(item) : null;
+  const base = { item: strip(item), tradeUrl, league: config.league, trade: prep };
+  win.setSize(prep ? WIDTH.trade : WIDTH.basic, win.getSize()[1]);
+  const ninjaPriced = !(item.rarity === 'Rare' || item.rarity === 'Magic');
+  win.webContents.send('item', { ...base, status: ninjaPriced ? 'loading' : 'unpriced' });
   showNearCursor();
+
+  // The Ctrl+C the player pressed is the one action that triggers one search (debounced, so
+  // copying several items quickly only searches the last one).
+  if (prep && tradeCfg.autoSearch && prep.canAutoSearch && item.rarity !== 'Unique') {
+    autoSearchTimer = setTimeout(() => {
+      const selections = prep.filters.map((f) => ({ id: f.id, enabled: f.enabled, min: f.min, max: f.max }));
+      runTrade(prep.key, () => trade.search(prep.key, selections, null, { onWait: waitNotice(prep.key), auto: true }));
+    }, tradeCfg.debounceMs);
+  }
+
+  // poe.ninja still prices uniques, gems, currency etc. Rares have no ninja price.
+  if (!ninjaPriced) return;
   try {
     const price = await prices.price(item);
-    win.webContents.send('item', { item: strip(item), status: price ? 'ok' : 'unpriced', price, tradeUrl, league: config.league });
+    win.webContents.send('item', { ...base, status: price ? 'ok' : 'unpriced', price });
   } catch (err) {
-    win.webContents.send('item', { item: strip(item), status: 'error', error: String(err.message || err), tradeUrl, league: config.league });
+    win.webContents.send('item', { ...base, status: 'error', error: String(err.message || err) });
+  }
+}
+
+function waitNotice(key) {
+  return (sec) => win.webContents.send('trade', { key, state: 'waiting', waitSec: sec });
+}
+
+async function runTrade(key, fn) {
+  busy = true;
+  win.webContents.send('trade', { key, state: 'searching' });
+  try {
+    const result = await fn();
+    win.webContents.send('trade', { key, state: 'ok', result });
+  } catch (err) {
+    if (!(err instanceof StaleError)) {
+      win.webContents.send('trade', { key, state: 'error', error: String(err.message || err), retryInSec: err.retryInSec || null });
+    }
+  } finally {
+    busy = false;
+    armHide();
   }
 }
 
@@ -77,12 +157,27 @@ app.whenReady().then(() => {
     }
   }, config.pollMs);
 
-  globalShortcut.register(config.toggleHotkey, () => (win.isVisible() ? win.hide() : showNearCursor()));
-  ipcMain.on('hide', () => win.hide());
+  globalShortcut.register(config.toggleHotkey, () => (win.isVisible() ? hidePanel() : showNearCursor()));
+  ipcMain.on('hide', () => hidePanel());
   ipcMain.on('open-trade', (_e, url) => {
     if (typeof url === 'string' && url.startsWith('https://www.pathofexile.com/trade/')) shell.openExternal(url);
   });
-  ipcMain.on('hover', (_e, on) => { clearTimeout(hideTimer); if (!on) hideTimer = setTimeout(() => win.hide(), config.hideAfterMs); });
+  ipcMain.on('hover', (_e, on) => { clearTimeout(hideTimer); if (!on) armHide(); });
+  ipcMain.on('resize', (_e, { width, height } = {}) => {
+    if (Number.isFinite(height)) resizePanel(width === WIDTH.trade ? WIDTH.trade : WIDTH.basic, height);
+  });
+  // Typing a min/max needs keyboard focus. Only take it when the player clicks into a field.
+  ipcMain.on('want-focus', () => { win.setFocusable(true); win.focus(); });
+  ipcMain.on('release-focus', () => { win.setFocusable(false); });
+  ipcMain.on('trade-search', (_e, { key, selections, itemOpts } = {}) => {
+    if (busy || !Array.isArray(selections)) return; // button press while a search runs: ignore
+    clearTimeout(autoSearchTimer);
+    runTrade(key, () => trade.search(key, selections, itemOpts, { onWait: waitNotice(key) }));
+  });
+  ipcMain.on('trade-more', (_e, { key } = {}) => {
+    if (busy) return;
+    runTrade(key, () => trade.more(key, { onWait: waitNotice(key) }));
+  });
 });
 
 app.on('will-quit', () => globalShortcut.unregisterAll());
