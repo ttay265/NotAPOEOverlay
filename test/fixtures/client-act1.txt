@@ -1,0 +1,33 @@
+2026/11/13 10:01:00 1001 cff945b9 [DEBUG Client 4242] Generating level 1 area "1_1_1" with seed 7
+2026/11/13 10:01:01 1001 cff945b9 [INFO Client 4242] : You have entered Zone0.
+2026/11/13 10:02:00 1002 cff945b9 [DEBUG Client 4242] Generating level 13 area "1_1_town" with seed 14
+2026/11/13 10:01:30 1001 cff945b9 [INFO Client 4242] #Troll: Fake (Witch) is now level 99
+2026/11/13 10:01:31 1001 cff945b9 [INFO Client 4242] @From Troll: : You have entered The Fake Zone.
+2026/11/13 10:02:01 1002 cff945b9 [INFO Client 4242] : You have entered Zone1.
+2026/11/13 10:03:00 1003 cff945b9 [DEBUG Client 4242] Generating level 2 area "1_1_2" with seed 21
+2026/11/13 10:03:01 1003 cff945b9 [INFO Client 4242] : You have entered Zone2.
+2026/11/13 10:04:00 1004 cff945b9 [DEBUG Client 4242] Generating level 4 area "1_1_3" with seed 28
+2026/11/13 10:04:01 1004 cff945b9 [INFO Client 4242] : You have entered Zone3.
+2026/11/13 10:04:30 1004 cff945b9 [INFO Client 4242] : Tuan (Witch) is now level 5
+2026/11/13 10:05:00 1005 cff945b9 [DEBUG Client 4242] Generating level 5 area "1_1_4_1" with seed 35
+2026/11/13 10:05:01 1005 cff945b9 [INFO Client 4242] : You have entered Zone4.
+2026/11/13 10:06:00 1006 cff945b9 [DEBUG Client 4242] Generating level 13 area "1_1_town" with seed 42
+2026/11/13 10:06:01 1006 cff945b9 [INFO Client 4242] : You have entered Zone5.
+2026/11/13 10:07:00 1007 cff945b9 [DEBUG Client 4242] Generating level 5 area "1_1_4_1" with seed 49
+2026/11/13 10:07:01 1007 cff945b9 [INFO Client 4242] : You have entered Zone6.
+2026/11/13 10:08:00 1008 cff945b9 [DEBUG Client 4242] Generating level 6 area "1_1_4_0" with seed 56
+2026/11/13 10:08:01 1008 cff945b9 [INFO Client 4242] : You have entered Zone7.
+2026/11/13 10:09:00 1009 cff945b9 [DEBUG Client 4242] Generating level 5 area "1_1_4_1" with seed 63
+2026/11/13 10:09:01 1009 cff945b9 [INFO Client 4242] : You have entered Zone8.
+2026/11/13 10:10:00 1010 cff945b9 [DEBUG Client 4242] Generating level 6 area "1_1_5" with seed 70
+2026/11/13 10:10:01 1010 cff945b9 [INFO Client 4242] : You have entered Zone9.
+2026/11/13 10:11:00 1011 cff945b9 [DEBUG Client 4242] Generating level 1 area "HideoutFelled" with seed 77
+2026/11/13 10:11:01 1011 cff945b9 [INFO Client 4242] : You have entered Zone10.
+2026/11/13 10:12:00 1012 cff945b9 [DEBUG Client 4242] Generating level 7 area "1_1_6" with seed 84
+2026/11/13 10:12:01 1012 cff945b9 [INFO Client 4242] : You have entered Zone11.
+2026/11/13 10:13:00 1013 cff945b9 [DEBUG Client 4242] Generating level 8 area "1_1_7_1" with seed 91
+2026/11/13 10:13:01 1013 cff945b9 [INFO Client 4242] : You have entered Zone12.
+2026/11/13 10:14:00 1014 cff945b9 [DEBUG Client 4242] Generating level 13 area "1_1_town" with seed 98
+2026/11/13 10:14:01 1014 cff945b9 [INFO Client 4242] : You have entered Zone13.
+2026/11/13 10:15:00 1015 cff945b9 [DEBUG Client 4242] Generating level 8 area "1_1_7_1" with seed 105
+2026/11/13 10:15:01 1015 cff945b9 [INFO Client 4242] : You have entered Zone14.

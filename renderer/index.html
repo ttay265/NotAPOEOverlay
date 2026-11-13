@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<style>
+  html, body { margin: 0; background: transparent; font: 13px/1.4 "Segoe UI", sans-serif; color: #e8e2d0; user-select: none; }
+  .card { margin: 4px; padding: 10px 12px; background: rgba(18, 14, 10, 0.94); border: 1px solid #6b5a3a; border-radius: 6px; }
+  .name { font-size: 15px; font-weight: 600; }
+  .Unique { color: #d98a3d; } .Rare { color: #e8d36a; } .Magic { color: #8888ff; }
+  .Gem { color: #1ba29b; } .Currency { color: #c9b98b; } .Divination { color: #bfe3f5; }
+  .meta { color: #9a8f78; font-size: 12px; margin-top: 2px; }
+  .price { font-size: 20px; margin-top: 8px; }
+  .sub { color: #b8ad92; }
+  .low { color: #e0a050; font-size: 12px; }
+  .err { color: #e06060; }
+  .row { display: flex; gap: 6px; margin-top: 10px; }
+  button { flex: 1; background: #3a2f1f; color: #e8e2d0; border: 1px solid #6b5a3a; border-radius: 4px; padding: 5px; cursor: pointer; }
+  button:hover { background: #4d3e28; }
+</style>
+</head>
+<body>
+  <div class="card" id="card"><div class="meta">Hover an item in game and press Ctrl+C.</div></div>
+  <script src="renderer.js"></script>
+</body>
+</html>

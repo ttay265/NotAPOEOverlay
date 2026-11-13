@@ -1,0 +1,472 @@
+{
+"a1q1":{
+"name":"Enemy at the Gate",
+"act":1,
+"npc":"Tarkleigh"
+},
+"a1q5":{
+"name":"Mercy Mission",
+"act":1,
+"npc":"Nessa"
+},
+"a1q4":{
+"name":"Breaking Some Eggs",
+"act":1,
+"npc":"Tarkleigh"
+},
+"a1q8":{
+"name":"A Dirty Job",
+"act":1,
+"npc":"Tarkleigh"
+},
+"a1q7":{
+"name":"The Dweller of the Deep",
+"act":1,
+"npc":"Tarkleigh"
+},
+"a1q2":{
+"name":"The Caged Brute",
+"act":1,
+"npc":"Nessa"
+},
+"a1q6":{
+"name":"The Marooned Mariner",
+"act":1,
+"npc":"Bestel"
+},
+"a1q3":{
+"name":"The Siren's Cadence",
+"act":1,
+"npc":"Nessa"
+},
+"a1q9":{
+"name":"The Way Forward",
+"act":1,
+"npc":"Bestel"
+},
+"a2q11":{
+"name":"The Way Forward",
+"act":2,
+"npc":null
+},
+"a2q5":{
+"name":"Through Sacred Ground",
+"act":2,
+"npc":"Yeena"
+},
+"a2q6":{
+"name":"Intruders in Black",
+"act":2,
+"npc":"Greust"
+},
+"a2q10":{
+"name":"The Great White Beast",
+"act":2,
+"npc":"Yeena"
+},
+"a2q4":{
+"name":"Sharp and Cruel",
+"act":2,
+"npc":"Silk"
+},
+"a2q9":{
+"name":"The Root of the Problem",
+"act":2,
+"npc":"Tutorial NPC"
+},
+"a2q7":{
+"name":"Deal with the Bandits",
+"act":2,
+"npc":"Eramir"
+},
+"a2q1":{
+"name":"The Bandit Lord Kraityn",
+"act":2,
+"npc":null
+},
+"a2q2":{
+"name":"The Bandit Lord Alira",
+"act":2,
+"npc":null
+},
+"a2q3":{
+"name":"The Bandit Lord Oak",
+"act":2,
+"npc":null
+},
+"a2q8":{
+"name":"Shadow of the Vaal",
+"act":2,
+"npc":null
+},
+"a2q8a3":{
+"name":"Shadow of the Vaal",
+"act":3,
+"npc":null
+},
+"a3q1":{
+"name":"Lost in Love",
+"act":3,
+"npc":"Maramoa"
+},
+"a3q2":{
+"name":"Lost in Love",
+"act":3,
+"npc":"Clarissa"
+},
+"a3q11":{
+"name":"Victario's Secrets",
+"act":3,
+"npc":"Hargan"
+},
+"a3q3":{
+"name":"The Gemling Queen",
+"act":3,
+"npc":null
+},
+"a3q4":{
+"name":"The Ribbon Spool",
+"act":3,
+"npc":"Lady Dialla"
+},
+"a3q5":{
+"name":"Fiery Dust",
+"act":3,
+"npc":"Lady Dialla"
+},
+"a3q8":{
+"name":"Sever the Right Hand",
+"act":3,
+"npc":"Maramoa"
+},
+"a3q12":{
+"name":"A Fixture of Fate",
+"act":3,
+"npc":"Siosa"
+},
+"a3q13":{
+"name":"A Swig of Hope",
+"act":3,
+"npc":"Captain Fairgraves"
+},
+"a3q9":{
+"name":"Piety's Pets",
+"act":3,
+"npc":"Grigor"
+},
+"a3q10":{
+"name":"The Sceptre of God",
+"act":3,
+"npc":null
+},
+"d2c1":{
+"name":"",
+"act":0,
+"npc":"Chest 1"
+},
+"d2c2":{
+"name":"",
+"act":0,
+"npc":"Chest 2"
+},
+"a4q1":{
+"name":"The Eternal Nightmare",
+"act":4,
+"npc":"Dialla"
+},
+"a4q2":{
+"name":"Breaking the Seal",
+"act":4,
+"npc":"Oyun"
+},
+"a4q3":{
+"name":"The King of Fury",
+"act":4,
+"npc":null
+},
+"a4q4":{
+"name":"The King of Desire",
+"act":4,
+"npc":null
+},
+"a4q5":{
+"name":"Corpus Malachus",
+"act":4,
+"npc":null
+},
+"a4q6":{
+"name":"An Indomitable Spirit",
+"act":4,
+"npc":"Tasuni"
+},
+"bandit_respec":{
+"name":"",
+"act":0,
+"npc":"Eramir"
+},
+"a5q1a":{
+"name":"Return to Oriath",
+"act":4,
+"npc":null
+},
+"a5q1b":{
+"name":"Return to Oriath",
+"act":5,
+"npc":"Lani"
+},
+"a5q2":{
+"name":"The Key to Freedom",
+"act":5,
+"npc":"Lani"
+},
+"a5q3":{
+"name":"In Service to Science",
+"act":5,
+"npc":"Vilenta"
+},
+"a5q4":{
+"name":"Death to Purity",
+"act":5,
+"npc":"Lani"
+},
+"a5q5":{
+"name":"The King's Feast",
+"act":5,
+"npc":"Bannon"
+},
+"a5q6":{
+"name":"The Ravenous God",
+"act":5,
+"npc":null
+},
+"a5q7":{
+"name":"Kitava's Torments",
+"act":5,
+"npc":"Lani"
+},
+"a6q1":{
+"name":"The Brine King",
+"act":6,
+"npc":null
+},
+"a6q2":{
+"name":"Essence of Umbra",
+"act":6,
+"npc":"Tarkleigh"
+},
+"a6q3":{
+"name":"The Father of War",
+"act":6,
+"npc":"Tarkleigh"
+},
+"a6q4":{
+"name":"Fallen from Grace",
+"act":6,
+"npc":"Lilly Roth"
+},
+"a6q5":{
+"name":"Bestel's Epic",
+"act":6,
+"npc":"Bestel"
+},
+"a6q6":{
+"name":"The Puppet Mistress",
+"act":6,
+"npc":"Tarkleigh"
+},
+"a6q7":{
+"name":"The Cloven One",
+"act":6,
+"npc":"Bestel"
+},
+"a7q1":{
+"name":"The Master of a Million Faces",
+"act":7,
+"npc":"Eramir"
+},
+"a7q2":{
+"name":"Essence of the Artist",
+"act":7,
+"npc":"Helena"
+},
+"a7q3":{
+"name":"Web of Secrets",
+"act":7,
+"npc":"Silk"
+},
+"a7q4":{
+"name":"The Mother of Spiders",
+"act":7,
+"npc":null
+},
+"a7q5":{
+"name":"The Silver Locket",
+"act":7,
+"npc":"Weylam Roth"
+},
+"a7q6":{
+"name":"Kishara's Star",
+"act":7,
+"npc":"Weylam Roth"
+},
+"a7q7":{
+"name":"Lighting the Way",
+"act":7,
+"npc":null
+},
+"a7q8":{
+"name":"In Memory of Greust",
+"act":7,
+"npc":"Helena"
+},
+"a7q9":{
+"name":"Queen of Despair",
+"act":7,
+"npc":"Eramir"
+},
+"a8q1":{
+"name":"Essence of the Hag",
+"act":8,
+"npc":"Hargan"
+},
+"a8q2":{
+"name":"Lunar Eclipse",
+"act":8,
+"npc":null
+},
+"a8q3":{
+"name":"Solar Eclipse",
+"act":8,
+"npc":null
+},
+"a8q4":{
+"name":"Reflection of Terror",
+"act":8,
+"npc":"Hargan"
+},
+"a8q5":{
+"name":"The Wings of Vastiri",
+"act":8,
+"npc":"Hargan"
+},
+"a8q6":{
+"name":"Love is Dead",
+"act":8,
+"npc":"Clarissa"
+},
+"a8q7":{
+"name":"The Gemling Legion",
+"act":8,
+"npc":"Maramoa"
+},
+"a9q1":{
+"name":"Recurring Nightmare",
+"act":9,
+"npc":null
+},
+"a9q2":{
+"name":"The Ruler of Highgate",
+"act":9,
+"npc":"Irasha"
+},
+"a9q3":{
+"name":"The Storm Blade",
+"act":9,
+"npc":"Petarus and Vanja"
+},
+"a9q4":{
+"name":"Fastis Fortuna",
+"act":9,
+"npc":"Petarus and Vanja"
+},
+"a9q5":{
+"name":"Queen of the Sands",
+"act":9,
+"npc":"Irasha"
+},
+"a10q1":{
+"name":"Safe Passage",
+"act":10,
+"npc":"Lani"
+},
+"a10q2":{
+"name":"Death and Rebirth",
+"act":10,
+"npc":"Lani"
+},
+"a10q3":{
+"name":"An End to Hunger",
+"act":10,
+"npc":"Lani"
+},
+"a10q4":{
+"name":"No Love for Old Ghosts",
+"act":10,
+"npc":"Weylam Roth"
+},
+"a10q5":{
+"name":"Map to Tsoatha",
+"act":10,
+"npc":"Lilly Roth"
+},
+"a10q6":{
+"name":"Vilenta's Vengeance",
+"act":10,
+"npc":"Lani"
+},
+"a10q3a11":{
+"name":"An End to Hunger",
+"act":11,
+"npc":null
+},
+"A11q0":{
+"name":"Toward the Future",
+"act":10,
+"npc":null
+},
+"a11q1":{
+"name":"A Call to Arms",
+"act":12,
+"npc":null
+},
+"maven_atlas":{
+"name":"The Maven",
+"act":12,
+"npc":null
+},
+"maven_boss":{
+"name":"The Maven's Game",
+"act":12,
+"npc":"Commander Kirac"
+},
+"uberelder":{
+"name":"The Elder",
+"act":12,
+"npc":"Commander Kirac"
+},
+"tangle":{
+"name":"The Eater of Worlds",
+"act":12,
+"npc":"Commander Kirac"
+},
+"cleansing_fire":{
+"name":"The Searing Exarch",
+"act":12,
+"npc":"Commander Kirac"
+},
+"kirac_atlas":{
+"name":"The Atlas of Worlds",
+"act":12,
+"npc":"Commander Kirac"
+},
+"ThreadsOfTheOriginator":{
+"name":"Threads of the Originator",
+"act":12,
+"npc":"Eagon Caeserius"
+},
+"DeepwaterFairgravesAllflameQuest":{
+"name":"The Spirit Flame",
+"act":1,
+"npc":"Vesper"
+}
+}

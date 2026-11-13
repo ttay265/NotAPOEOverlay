@@ -1,0 +1,1565 @@
+{
+"1_1_1":{
+"name":"The Twilight Strand",
+"act":1,
+"level":1,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_Labyrinth_boss_3":{
+"name":"Aspirant's Trial",
+"act":3,
+"level":33,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"All Resistances - Rank 1"
+]
+},
+"2_Labyrinth_boss_3":{
+"name":"Aspirant's Trial",
+"act":3,
+"level":55,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Double Resistances - Rank 2"
+]
+},
+"3_Labyrinth_boss_3":{
+"name":"Aspirant's Trial",
+"act":3,
+"level":68,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Double Resistances - Rank 3"
+]
+},
+"EndGame_Labyrinth_boss_3":{
+"name":"Aspirant's Trial",
+"act":11,
+"level":75,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"All Resistances - Rank 2"
+]
+},
+"1_1_town":{
+"name":"Lioneye's Watch",
+"act":1,
+"level":13,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"1_1_2":{
+"name":"The Coast",
+"act":1,
+"level":2,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_3":{
+"name":"The Mud Flats",
+"act":1,
+"level":4,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_2a":{
+"name":"The Tidal Island",
+"act":1,
+"level":3,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_4_1":{
+"name":"The Submerged Passage",
+"act":1,
+"level":5,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_3a":{
+"name":"The Fetid Pool",
+"act":1,
+"level":5,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_5":{
+"name":"The Ledge",
+"act":1,
+"level":6,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_4_0":{
+"name":"The Flooded Depths",
+"act":1,
+"level":6,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_6":{
+"name":"The Climb",
+"act":1,
+"level":7,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_7_1":{
+"name":"The Lower Prison",
+"act":1,
+"level":8,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_7_2":{
+"name":"The Upper Prison",
+"act":1,
+"level":9,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_8":{
+"name":"Prisoner's Gate",
+"act":1,
+"level":10,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_9":{
+"name":"The Ship Graveyard",
+"act":1,
+"level":11,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_2_9":{
+"name":"The Western Forest",
+"act":2,
+"level":17,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_1_9a":{
+"name":"The Ship Graveyard Cave",
+"act":1,
+"level":12,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_1_11_1":{
+"name":"The Cavern of Wrath",
+"act":1,
+"level":12,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_2_7":{
+"name":"The Riverways",
+"act":2,
+"level":15,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_10":{
+"name":"The Weaver's Chambers",
+"act":2,
+"level":18,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_1_11_2":{
+"name":"The Cavern of Anger",
+"act":1,
+"level":13,
+"wp":false,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_2_town":{
+"name":"The Forest Encampment",
+"act":2,
+"level":23,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"1_2_12":{
+"name":"The Wetlands",
+"act":2,
+"level":19,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_1":{
+"name":"The Southern Forest",
+"act":2,
+"level":13,
+"wp":true,
+"town":false,
+"townId":"1_1_town",
+"recipes":[]
+},
+"1_2_2":{
+"name":"The Old Fields",
+"act":2,
+"level":14,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_11":{
+"name":"The Vaal Ruins",
+"act":2,
+"level":20,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_2a":{
+"name":"The Den",
+"act":2,
+"level":15,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_3":{
+"name":"The Crossroads",
+"act":2,
+"level":15,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_8":{
+"name":"The Northern Forest",
+"act":2,
+"level":21,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_4":{
+"name":"The Broken Bridge",
+"act":2,
+"level":16,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_15":{
+"name":"The Fellshrine Ruins",
+"act":2,
+"level":16,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_6_1":{
+"name":"The Chamber of Sins Level 1",
+"act":2,
+"level":15,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_13":{
+"name":"The Dread Thicket",
+"act":2,
+"level":21,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_14_2":{
+"name":"The Caverns",
+"act":2,
+"level":22,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[
+"Vaal Skill Damage - Rank 1"
+]
+},
+"1_2_5_1":{
+"name":"The Crypt Level 1",
+"act":2,
+"level":17,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_6_2":{
+"name":"The Chamber of Sins Level 2",
+"act":2,
+"level":16,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_2_14_3":{
+"name":"The Ancient Pyramid",
+"act":2,
+"level":23,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[
+"Spell Damage - Rank 1"
+]
+},
+"1_2_5_2":{
+"name":"The Crypt Level 2",
+"act":2,
+"level":18,
+"wp":false,
+"town":false,
+"townId":"1_2_town",
+"recipes":[]
+},
+"1_3_1":{
+"name":"The City of Sarn",
+"act":3,
+"level":23,
+"wp":true,
+"town":false,
+"townId":"1_2_town",
+"recipes":[
+"Movement Speed - Rank 1"
+]
+},
+"1_3_town":{
+"name":"The Sarn Encampment",
+"act":3,
+"level":33,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"1_3_2":{
+"name":"The Slums",
+"act":3,
+"level":24,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"ffa1_1":{
+"name":"Sarn Arena",
+"act":3,
+"level":36,
+"wp":false,
+"town":false,
+"townId":null,
+"recipes":[]
+},
+"Labyrinth_Airlock":{
+"name":"Aspirants' Plaza",
+"act":3,
+"level":33,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_3_1":{
+"name":"The Crematorium",
+"act":3,
+"level":25,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Defences - Rank 1"
+]
+},
+"1_3_10_1":{
+"name":"The Sewers",
+"act":3,
+"level":26,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Physical Damage - Rank 1"
+]
+},
+"2_8_town":{
+"name":"The Sarn Encampment",
+"act":8,
+"level":60,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"1_3_5":{
+"name":"The Marketplace",
+"act":3,
+"level":26,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_13":{
+"name":"The Ebony Barracks",
+"act":3,
+"level":29,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"2_8_1":{
+"name":"The Sarn Ramparts",
+"act":8,
+"level":55,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_8_2_1":{
+"name":"The Toxic Conduits",
+"act":8,
+"level":56,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"ffa3_1":{
+"name":"Sarn Arena",
+"act":3,
+"level":68,
+"wp":false,
+"town":false,
+"townId":null,
+"recipes":[]
+},
+"1_3_6":{
+"name":"The Catacombs",
+"act":3,
+"level":27,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Elemental Damage with Attacks - Rank 1"
+]
+},
+"1_3_7":{
+"name":"The Battlefront",
+"act":3,
+"level":27,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_14_1":{
+"name":"The Lunaris Temple Level 1",
+"act":3,
+"level":29,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_15":{
+"name":"The Imperial Gardens",
+"act":3,
+"level":30,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"All Attributes - Rank 1"
+]
+},
+"2_7_12_2":{
+"name":"The Temple of Decay Level 2",
+"act":7,
+"level":55,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[
+"Chaos Damage - Rank 1"
+]
+},
+"2_8_2_2":{
+"name":"Doedre's Cesspool",
+"act":8,
+"level":56,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[
+"Elemental Resistances - Rank 3"
+]
+},
+"1_3_8_1":{
+"name":"The Solaris Temple Level 1",
+"act":3,
+"level":27,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_9":{
+"name":"The Docks",
+"act":3,
+"level":29,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_14_2":{
+"name":"The Lunaris Temple Level 2",
+"act":3,
+"level":30,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Lightning Damage - Rank 1"
+]
+},
+"1_3_17_1":{
+"name":"The Library",
+"act":3,
+"level":30,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"1_3_18_1":{
+"name":"The Sceptre of God",
+"act":3,
+"level":32,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"2_7_12_1":{
+"name":"The Temple of Decay Level 1",
+"act":7,
+"level":54,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_8_3":{
+"name":"The Grand Promenade",
+"act":8,
+"level":56,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_8":{
+"name":"The Quay",
+"act":8,
+"level":57,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"1_3_8_2":{
+"name":"The Solaris Temple Level 2",
+"act":3,
+"level":28,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Fire Damage - Rank 1"
+]
+},
+"1_3_17_2":{
+"name":"The Archives",
+"act":3,
+"level":31,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[
+"Life and Mana Regeneration - Rank 1"
+]
+},
+"1_3_18_2":{
+"name":"The Upper Sceptre of God",
+"act":3,
+"level":33,
+"wp":false,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"2_7_11":{
+"name":"The Vaal City",
+"act":7,
+"level":54,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_8_5":{
+"name":"The Bath House",
+"act":8,
+"level":57,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[
+"Flask Duration - Rank 1"
+]
+},
+"2_8_9":{
+"name":"The Grain Gate",
+"act":8,
+"level":57,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"1_4_1":{
+"name":"The Aqueduct",
+"act":4,
+"level":33,
+"wp":true,
+"town":false,
+"townId":"1_3_town",
+"recipes":[]
+},
+"2_7_10":{
+"name":"The Causeway",
+"act":7,
+"level":54,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[
+"Cold Damage - Rank 2"
+]
+},
+"2_8_6":{
+"name":"The Lunaris Concourse",
+"act":8,
+"level":58,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_4":{
+"name":"The High Gardens",
+"act":8,
+"level":58,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_14":{
+"name":"The Hidden Underbelly",
+"act":8,
+"level":58,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_10":{
+"name":"The Imperial Fields",
+"act":8,
+"level":58,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"1_4_town":{
+"name":"Highgate",
+"act":4,
+"level":40,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"2_7_8":{
+"name":"The Northern Forest",
+"act":7,
+"level":53,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_8_7_1_":{
+"name":"The Lunaris Temple Level 1",
+"act":8,
+"level":59,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_13":{
+"name":"The Harbour Bridge",
+"act":8,
+"level":60,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_11":{
+"name":"The Solaris Concourse",
+"act":8,
+"level":58,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_12_1":{
+"name":"The Solaris Temple Level 1",
+"act":8,
+"level":59,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"1_4_2":{
+"name":"The Dried Lake",
+"act":4,
+"level":34,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Attack, Cast and Warcry Speed - Rank 1"
+]
+},
+"1_4_3_1":{
+"name":"The Mines Level 1",
+"act":4,
+"level":34,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Socket Colours"
+]
+},
+"1_4_7":{
+"name":"The Ascent",
+"act":4,
+"level":40,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Ailment, Stun and Curse Mitigation - Rank 1"
+]
+},
+"2_7_7":{
+"name":"The Ashen Fields",
+"act":7,
+"level":53,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_7_9":{
+"name":"The Dread Thicket",
+"act":7,
+"level":53,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[
+"Fire Damage - Rank 2"
+]
+},
+"2_8_7_2":{
+"name":"The Lunaris Temple Level 2",
+"act":8,
+"level":59,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[
+"Minions - Rank 1"
+]
+},
+"2_9_1":{
+"name":"The Blood Aqueduct",
+"act":9,
+"level":61,
+"wp":true,
+"town":false,
+"townId":"2_8_town",
+"recipes":[]
+},
+"2_8_12_2":{
+"name":"The Solaris Temple Level 2",
+"act":8,
+"level":59,
+"wp":false,
+"town":false,
+"townId":"2_8_town",
+"recipes":[
+"Traps and Mines - Rank 1"
+]
+},
+"1_4_3_2":{
+"name":"The Mines Level 2",
+"act":4,
+"level":35,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[]
+},
+"1_5_1":{
+"name":"The Slave Pens",
+"act":5,
+"level":41,
+"wp":true,
+"town":false,
+"townId":"1_4_town",
+"recipes":[]
+},
+"2_7_6":{
+"name":"The Den",
+"act":7,
+"level":53,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_9_town":{
+"name":"Highgate",
+"act":9,
+"level":67,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"1_4_3_3":{
+"name":"The Crystal Veins",
+"act":4,
+"level":36,
+"wp":true,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Cold Damage - Rank 1"
+]
+},
+"1_5_town":{
+"name":"Overseer's Tower",
+"act":5,
+"level":45,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"2_7_5_2":{
+"name":"The Chamber of Sins Level 2",
+"act":7,
+"level":52,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[
+"Mana Regen - Rank 1"
+]
+},
+"2_9_2":{
+"name":"The Descent",
+"act":9,
+"level":61,
+"wp":false,
+"town":false,
+"townId":"2_9_town",
+"recipes":[]
+},
+"1_4_4_1":{
+"name":"Kaom's Dream",
+"act":4,
+"level":37,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[]
+},
+"1_4_5_1":{
+"name":"Daresso's Dream",
+"act":4,
+"level":37,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[]
+},
+"1_4_6_1":{
+"name":"The Belly of the Beast Level 1",
+"act":4,
+"level":38,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[]
+},
+"1_5_2":{
+"name":"The Control Blocks",
+"act":5,
+"level":41,
+"wp":false,
+"town":false,
+"townId":"1_5_town",
+"recipes":[]
+},
+"2_7_5_1":{
+"name":"The Chamber of Sins Level 1",
+"act":7,
+"level":52,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[
+"Lightning Damage - Rank 2"
+]
+},
+"2_9_3":{
+"name":"The Vastiri Desert",
+"act":9,
+"level":61,
+"wp":true,
+"town":false,
+"townId":"2_9_town",
+"recipes":[
+"Attack and Cast Speed - Rank 2"
+]
+},
+"1_4_4_3":{
+"name":"Kaom's Stronghold",
+"act":4,
+"level":38,
+"wp":true,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Socket Links - 2 to 4 Linked Sockets"
+]
+},
+"1_4_5_2":{
+"name":"The Grand Arena",
+"act":4,
+"level":38,
+"wp":true,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Socket Numbers - 2 to 4 Sockets"
+]
+},
+"1_4_6_2":{
+"name":"The Belly of the Beast Level 2",
+"act":4,
+"level":39,
+"wp":false,
+"town":false,
+"townId":"1_4_town",
+"recipes":[
+"Elemental Resistances - Rank 2"
+]
+},
+"1_5_3":{
+"name":"Oriath Square",
+"act":5,
+"level":42,
+"wp":true,
+"town":false,
+"townId":"1_5_town",
+"recipes":[]
+},
+"2_7_2":{
+"name":"The Crossroads",
+"act":7,
+"level":51,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_7_5_map":{
+"name":"Maligaro's Sanctum",
+"act":7,
+"level":52,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_9_4":{
+"name":"The Oasis",
+"act":9,
+"level":61,
+"wp":false,
+"town":false,
+"townId":"2_9_town",
+"recipes":[]
+},
+"2_9_5":{
+"name":"The Foothills",
+"act":9,
+"level":62,
+"wp":true,
+"town":false,
+"townId":"2_9_town",
+"recipes":[]
+},
+"1_4_6_3":{
+"name":"The Harvest",
+"act":4,
+"level":40,
+"wp":true,
+"town":false,
+"townId":"1_4_town",
+"recipes":[]
+},
+"1_5_4":{
+"name":"The Templar Courts",
+"act":5,
+"level":42,
+"wp":true,
+"town":false,
+"townId":"1_5_town",
+"recipes":[]
+},
+"2_7_1":{
+"name":"The Broken Bridge",
+"act":7,
+"level":50,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_7_3":{
+"name":"The Fellshrine Ruins",
+"act":7,
+"level":51,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_9_6":{
+"name":"The Boiling Lake",
+"act":9,
+"level":62,
+"wp":false,
+"town":false,
+"townId":"2_9_town",
+"recipes":[
+"Spell Damage - Rank 3"
+]
+},
+"2_9_7":{
+"name":"The Tunnel",
+"act":9,
+"level":62,
+"wp":true,
+"town":false,
+"townId":"2_9_town",
+"recipes":[
+"All Attributes - Rank 2"
+]
+},
+"1_5_5":{
+"name":"The Chamber of Innocence",
+"act":5,
+"level":43,
+"wp":true,
+"town":false,
+"townId":"1_5_town",
+"recipes":[
+"Movement Speed and Exerted Attacks - Rank 2"
+]
+},
+"2_7_town":{
+"name":"The Bridge Encampment",
+"act":7,
+"level":55,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"SanctumFoyer_Fellshrine":{
+"name":"The Forbidden Sanctum",
+"act":7,
+"level":1,
+"wp":false,
+"town":false,
+"townId":"2_7_town",
+"recipes":[]
+},
+"2_7_4":{
+"name":"The Crypt",
+"act":7,
+"level":51,
+"wp":true,
+"town":false,
+"townId":"2_7_town",
+"recipes":[
+"Damage over Time - Rank 1"
+]
+},
+"2_9_8":{
+"name":"The Quarry",
+"act":9,
+"level":63,
+"wp":true,
+"town":false,
+"townId":"2_9_town",
+"recipes":[
+"Physical Damage - Rank 3"
+]
+},
+"1_5_4b":{
+"name":"The Torched Courts",
+"act":5,
+"level":44,
+"wp":false,
+"town":false,
+"townId":"1_5_town",
+"recipes":[]
+},
+"2_6_15":{
+"name":"The Brine King's Reef",
+"act":6,
+"level":50,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_9_9":{
+"name":"The Refinery",
+"act":9,
+"level":63,
+"wp":false,
+"town":false,
+"townId":"2_9_town",
+"recipes":[
+"Trigger a Socketed Spell when you Use a Skill or Focus"
+]
+},
+"2_9_10_1":{
+"name":"The Belly of the Beast",
+"act":9,
+"level":63,
+"wp":false,
+"town":false,
+"townId":"2_9_town",
+"recipes":[]
+},
+"1_5_3b":{
+"name":"The Ruined Square",
+"act":5,
+"level":44,
+"wp":true,
+"town":false,
+"townId":"1_5_town",
+"recipes":[]
+},
+"2_6_14":{
+"name":"The Beacon",
+"act":6,
+"level":49,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[
+"Life and Mana - Rank 2"
+]
+},
+"2_9_10_2":{
+"name":"The Rotting Core",
+"act":9,
+"level":64,
+"wp":false,
+"town":false,
+"townId":"2_9_town",
+"recipes":[]
+},
+"1_5_6":{
+"name":"The Ossuary",
+"act":5,
+"level":44,
+"wp":false,
+"town":false,
+"townId":"1_5_town",
+"recipes":[
+"Physical Damage - Rank 2"
+]
+},
+"1_5_8":{
+"name":"The Cathedral Rooftop",
+"act":5,
+"level":45,
+"wp":true,
+"town":false,
+"townId":"1_5_town",
+"recipes":[]
+},
+"1_5_7":{
+"name":"The Reliquary",
+"act":5,
+"level":44,
+"wp":true,
+"town":false,
+"townId":"1_5_town",
+"recipes":[
+"Accuracy - Rank 1"
+]
+},
+"2_6_13":{
+"name":"The Cavern of Anger",
+"act":6,
+"level":49,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_10_town":{
+"name":"Oriath Docks",
+"act":10,
+"level":69,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"2_6_town":{
+"name":"Lioneye's Watch",
+"act":6,
+"level":50,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[]
+},
+"2_6_12":{
+"name":"The Southern Forest",
+"act":6,
+"level":49,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_10_1":{
+"name":"The Cathedral Rooftop",
+"act":10,
+"level":64,
+"wp":false,
+"town":false,
+"townId":"2_10_town",
+"recipes":[]
+},
+"2_10_6":{
+"name":"The Feeding Trough",
+"act":10,
+"level":67,
+"wp":false,
+"town":false,
+"townId":"2_10_town",
+"recipes":[
+"Life and Mana - Rank 3"
+]
+},
+"2_11_endgame_town":{
+"name":"Karui Shores",
+"act":11,
+"level":69,
+"wp":true,
+"town":true,
+"townId":null,
+"recipes":[
+"Movement Speed and Flask Enchantments - Rank 3"
+]
+},
+"2_6_2":{
+"name":"The Coast",
+"act":6,
+"level":45,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_6_1":{
+"name":"The Twilight Strand",
+"act":6,
+"level":45,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_6_10":{
+"name":"The Riverways",
+"act":6,
+"level":48,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_10_2":{
+"name":"The Ravaged Square",
+"act":10,
+"level":64,
+"wp":true,
+"town":false,
+"townId":"2_10_town",
+"recipes":[]
+},
+"2_10_5":{
+"name":"The Canals",
+"act":10,
+"level":66,
+"wp":false,
+"town":false,
+"townId":"2_10_town",
+"recipes":[]
+},
+"2_6_4":{
+"name":"The Mud Flats",
+"act":6,
+"level":46,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_6_3":{
+"name":"The Tidal Island",
+"act":6,
+"level":45,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_6_9":{
+"name":"The Western Forest",
+"act":6,
+"level":48,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[
+"Attributes - Rank 2"
+]
+},
+"2_6_11":{
+"name":"The Wetlands",
+"act":6,
+"level":48,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_10_3":{
+"name":"The Torched Courts",
+"act":10,
+"level":65,
+"wp":false,
+"town":false,
+"townId":"2_10_town",
+"recipes":[]
+},
+"2_10_9":{
+"name":"The Ossuary",
+"act":10,
+"level":67,
+"wp":false,
+"town":false,
+"townId":"2_10_town",
+"recipes":[
+"Chaos Damage - Rank 2"
+]
+},
+"2_10_8":{
+"name":"The Reliquary",
+"act":10,
+"level":67,
+"wp":true,
+"town":false,
+"townId":"2_10_town",
+"recipes":[]
+},
+"2_10_7":{
+"name":"The Control Blocks",
+"act":10,
+"level":66,
+"wp":true,
+"town":false,
+"townId":"2_10_town",
+"recipes":[]
+},
+"2_6_5":{
+"name":"The Karui Fortress",
+"act":6,
+"level":46,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[
+"Defences - Rank 2"
+]
+},
+"2_6_8":{
+"name":"Prisoner's Gate",
+"act":6,
+"level":47,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_10_4":{
+"name":"The Desecrated Chambers",
+"act":10,
+"level":65,
+"wp":true,
+"town":false,
+"townId":"2_10_town",
+"recipes":[
+"Accuracy - Rank 2"
+]
+},
+"2_6_6":{
+"name":"The Ridge",
+"act":6,
+"level":46,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[]
+},
+"2_6_7_2":{
+"name":"Shavronne's Tower",
+"act":6,
+"level":47,
+"wp":false,
+"town":false,
+"townId":"2_6_town",
+"recipes":[
+"Spell Damage - Rank 2"
+]
+},
+"2_6_7_1":{
+"name":"The Lower Prison",
+"act":6,
+"level":47,
+"wp":true,
+"town":false,
+"townId":"2_6_town",
+"recipes":[
+"Double Resistances - Rank 1"
+]
+}
+}

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<style>
+  html, body { margin: 0; height: 100%; background: transparent; font: 12.5px/1.4 "Segoe UI", sans-serif; color: #e8e2d0; user-select: none; overflow: hidden; }
+  .card { box-sizing: border-box; margin: 4px; max-height: calc(100% - 8px); display: flex; flex-direction: column; background: rgba(18, 14, 10, 0.9); border: 1px solid #6b5a3a; border-radius: 6px; }
+  .head { display: flex; align-items: center; gap: 6px; padding: 7px 10px 5px; border-bottom: 1px solid #3a3020; }
+  .title { flex: 1; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9a8f78; }
+  .btn { background: #3a2f1f; color: #e8e2d0; border: 1px solid #6b5a3a; border-radius: 4px; padding: 1px 7px; cursor: pointer; font: inherit; }
+  .btn:hover { background: #4d3e28; }
+  .body { overflow-y: auto; padding: 6px 10px 10px; }
+  .body::-webkit-scrollbar { width: 6px; } .body::-webkit-scrollbar-thumb { background: #4d3e28; border-radius: 3px; }
+  .zone { font-size: 16px; font-weight: 600; color: #f0e6c8; }
+  .meta { color: #9a8f78; font-size: 11.5px; }
+  .warn { color: #e0a050; font-size: 12px; margin-top: 4px; }
+  .err { color: #e06060; font-size: 12px; margin-top: 4px; }
+  .tip { margin-top: 4px; color: #c8bea4; font-style: italic; }
+  h4 { margin: 10px 0 3px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #9a8f78; font-weight: 600; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li.step { padding: 2px 0 2px 12px; position: relative; }
+  li.step::before { content: "•"; position: absolute; left: 1px; color: #6b5a3a; }
+  li.step.passive::before { content: "★"; color: #f0c040; left: -1px; }
+  .sub { display: block; color: #a99f86; font-size: 11.5px; padding-left: 8px; }
+  .next { margin-top: 2px; padding: 6px 8px; background: rgba(60, 48, 30, .55); border-left: 3px solid #c8a050; border-radius: 3px; }
+  .next .zone { font-size: 14px; }
+  .k-area { color: #f0e6c8; font-weight: 600; } .k-kill { color: #ff7a6a; } .k-item { color: #7fd38a; }
+  .k-quest { color: #e8d36a; } .k-wp { color: #7fb6ff; } .k-trial { color: #d89bff; } .k-generic { color: #e8c58a; }
+  .k-dir { color: #ffdd77; font-weight: 700; } .k-logout { color: #7fb6ff; }
+  .here { margin-top: 6px; padding: 5px 8px; border: 1px solid #a8862a; background: rgba(90, 70, 20, .45); border-radius: 4px; }
+  .here b { color: #f0c040; }
+  .q { display: flex; gap: 6px; padding: 2px 0; cursor: pointer; }
+  .q .box { flex: none; width: 13px; height: 13px; margin-top: 2px; border: 1px solid #8a7550; border-radius: 2px; text-align: center; line-height: 12px; font-size: 11px; color: #7fd38a; }
+  .q.done .name { color: #7d7563; text-decoration: line-through; }
+  .q .name { color: #e8e2d0; } .q .pts { color: #f0c040; }
+  .q .what { display: block; color: #a99f86; font-size: 11.5px; }
+  .q.done .what { display: none; }
+  .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; color: #7d7563; font-size: 11px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <span class="title" id="title">Leveling</span>
+      <button class="btn" id="prev" title="Back one zone">‹</button>
+      <button class="btn" id="next" title="Forward one zone">›</button>
+      <button class="btn" id="hide" title="Hide (Ctrl+Shift+L)">–</button>
+    </div>
+    <div class="body" id="body"><div class="meta">Waiting for Client.txt…</div></div>
+  </div>
+  <script src="leveling.js"></script>
+</body>
+</html>

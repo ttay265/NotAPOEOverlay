@@ -1,0 +1,16 @@
+{
+  "name": "poe-overlay-prototype",
+  "version": "0.2.0",
+  "description": "Path of Exile 1 overlay prototype: clipboard price check (poe.ninja) and campaign leveling helper (Client.txt)",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test \"test/**/*.test.js\"",
+    "price": "node scripts/price-check.js",
+    "leveling": "node scripts/leveling-replay.js"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0"
+  }
+}

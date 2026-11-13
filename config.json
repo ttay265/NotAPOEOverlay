@@ -1,0 +1,15 @@
+{
+  "league": "Standard",
+  "hideAfterMs": 10000,
+  "pollMs": 250,
+  "toggleHotkey": "Ctrl+Shift+Space",
+  "leveling": {
+    "enabled": true,
+    "clientLog": "",
+    "leagueStart": true,
+    "bandit": "kill_all",
+    "library": false,
+    "corner": "top-right",
+    "toggleHotkey": "Ctrl+Shift+L"
+  }
+}
