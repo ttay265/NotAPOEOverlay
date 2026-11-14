@@ -1,4 +1,7 @@
 'use strict';
+// Panel background opacity from config.json (overlay.opacity), passed by the main process in the URL.
+const bgAlpha = Number(new URLSearchParams(location.search).get('opacity'));
+if (Number.isFinite(bgAlpha) && bgAlpha > 0) document.documentElement.style.setProperty('--bg-alpha', String(bgAlpha));
 // Builds the panel with DOM nodes and textContent only, so route or log text can never inject HTML.
 
 const body = document.getElementById('body');

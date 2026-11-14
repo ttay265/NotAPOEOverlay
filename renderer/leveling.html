@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
 <style>
   html, body { margin: 0; height: 100%; background: transparent; font: 12.5px/1.4 "Segoe UI", sans-serif; color: #e8e2d0; user-select: none; overflow: hidden; }
-  .card { box-sizing: border-box; margin: 4px; max-height: calc(100% - 8px); display: flex; flex-direction: column; background: rgba(18, 14, 10, 0.9); border: 1px solid #6b5a3a; border-radius: 6px; }
+  .card { box-sizing: border-box; margin: 4px; max-height: calc(100% - 8px); display: flex; flex-direction: column; background: rgba(18, 14, 10, var(--bg-alpha, 0.6)); border: 1px solid #6b5a3a; border-radius: 6px; }
   .head { display: flex; align-items: center; gap: 6px; padding: 7px 10px 5px; border-bottom: 1px solid #3a3020; }
   .title { flex: 1; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9a8f78; }
   .btn { background: #3a2f1f; color: #e8e2d0; border: 1px solid #6b5a3a; border-radius: 4px; padding: 1px 7px; cursor: pointer; font: inherit; }
