@@ -5,10 +5,17 @@
 const CORNERS = ['top-left', 'top-right', 'bottom-left', 'bottom-right'];
 
 // Background opacity of the panels (0 = invisible card, 1 = solid). Text stays fully opaque.
-function clampOpacity(v, fallback = 0.6) {
+function clampOpacity(v, fallback = 0.35) {
   const n = Number(v);
   if (!Number.isFinite(n)) return fallback;
-  return Math.min(1, Math.max(0.1, n));
+  return Math.round(Math.min(1, Math.max(0, n)) * 100) / 100;
+}
+
+// Opacity of the whole window, text included. Never below 0.2 so a panel can't vanish.
+function clampPanelOpacity(v, fallback = 1) {
+  const n = Number(v);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.round(Math.min(1, Math.max(0.2, n)) * 100) / 100;
 }
 
 // Top-left x/y for a window of size [w, h] docked to `corner` of a display work area.
@@ -33,4 +40,4 @@ function priceOffsetX(pricePosition, leveling) {
   return (leveling.width || 340) + 8;
 }
 
-module.exports = { CORNERS, clampOpacity, dockPosition, priceOffsetX };
+module.exports = { CORNERS, clampOpacity, clampPanelOpacity, dockPosition, priceOffsetX };

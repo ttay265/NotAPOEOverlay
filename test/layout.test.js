@@ -1,7 +1,11 @@
 'use strict';
 const test = require('node:test');
 const assert = require('node:assert');
-const { clampOpacity, dockPosition, priceOffsetX } = require('../src/layout');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const { clampOpacity, clampPanelOpacity, dockPosition, priceOffsetX } = require('../src/layout');
+const { OverlaySettings } = require('../src/settings');
 
 const area = { x: 0, y: 0, width: 1920, height: 1040 };
 
@@ -31,7 +35,27 @@ test('price panel moves aside only when the leveling panel shares its corner', (
 
 test('opacity is clamped to a usable range', () => {
   assert.strictEqual(clampOpacity(0.6), 0.6);
-  assert.strictEqual(clampOpacity(0), 0.1);
+  assert.strictEqual(clampOpacity(0), 0);
+  assert.strictEqual(clampOpacity(-1), 0);
   assert.strictEqual(clampOpacity(5), 1);
-  assert.strictEqual(clampOpacity('abc'), 0.6);
+  assert.strictEqual(clampOpacity('abc'), 0.35);
+  assert.strictEqual(clampOpacity(0.123), 0.12);
+  assert.strictEqual(clampPanelOpacity(0), 0.2);
+  assert.strictEqual(clampPanelOpacity(undefined), 1);
+  assert.strictEqual(clampPanelOpacity(0.5), 0.5);
+});
+
+test('overlay settings start from config, save slider changes and reload them', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ovl-'));
+  const file = path.join(dir, 'overlay-settings.json');
+  const a = new OverlaySettings(file, { opacity: 0.5 });
+  assert.deepStrictEqual(a.get(), { bgOpacity: 0.5, panelOpacity: 1 });
+  assert.deepStrictEqual(a.set({ bgOpacity: 0.2, junk: 1 }), { bgOpacity: 0.2, panelOpacity: 1 });
+  assert.deepStrictEqual(a.set({ panelOpacity: 0.05 }), { bgOpacity: 0.2, panelOpacity: 0.2 });
+  a.flush();
+  const b = new OverlaySettings(file, { opacity: 0.9 });
+  assert.deepStrictEqual(b.get(), { bgOpacity: 0.2, panelOpacity: 0.2 });
+  fs.writeFileSync(file, 'not json');
+  assert.deepStrictEqual(new OverlaySettings(file, {}).get(), { bgOpacity: 0.35, panelOpacity: 1 });
+  fs.rmSync(dir, { recursive: true });
 });

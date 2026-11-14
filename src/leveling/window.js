@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const { ClientLogWatcher, findLogPath } = require('./clientlog');
 const { LevelingTracker } = require('./tracker');
-const { clampOpacity, dockPosition } = require('../layout');
+const { dockPosition } = require('../layout');
 
 const DEFAULTS = {
   enabled: true,
@@ -18,11 +18,11 @@ const DEFAULTS = {
   corner: 'top-left', // top-left | top-right | bottom-left | bottom-right
   width: 340,
   height: 460,
-  opacity: 0.6, // panel background opacity, 0.1 (see-through) to 1 (solid)
   toggleHotkey: 'Ctrl+Shift+L',
 };
 
-function setupLeveling(userConfig = {}) {
+// look: { bgOpacity, panelOpacity } from the shared overlay settings (src/settings.js).
+function setupLeveling(userConfig = {}, look = { bgOpacity: 0.35, panelOpacity: 1 }) {
   const cfg = { ...DEFAULTS, ...userConfig };
   if (!cfg.enabled) return null;
 
@@ -38,7 +38,8 @@ function setupLeveling(userConfig = {}) {
   });
   win.setAlwaysOnTop(true, 'screen-saver');
   win.setVisibleOnAllWorkspaces(true);
-  win.loadFile(path.join(__dirname, '..', '..', 'renderer', 'leveling.html'), { query: { opacity: String(clampOpacity(cfg.opacity)) } });
+  win.setOpacity(look.panelOpacity);
+  win.loadFile(path.join(__dirname, '..', '..', 'renderer', 'leveling.html'), { query: { bg: String(look.bgOpacity), panel: String(look.panelOpacity) } });
 
   const dock = () => {
     const { x, y } = dockPosition(screen.getPrimaryDisplay().workArea, win.getSize(), cfg.corner);
@@ -93,7 +94,21 @@ function setupLeveling(userConfig = {}) {
   ipcMain.on('leveling:step', (_e, d) => { tracker.step(d > 0 ? 1 : -1); changed(); });
   ipcMain.on('leveling:toggle', (_e, id) => { if (typeof id === 'string') { tracker.toggleDone(id); changed(); } });
   ipcMain.on('leveling:reset', () => { tracker.reset(); changed(); });
-  ipcMain.on('leveling:hide', () => win.hide());
+  // "–" collapses the panel to its header bar (the window shrinks too, so it stops covering the
+  // game); "+" opens it again. Ctrl+Shift+L still hides/shows it completely.
+  let collapsedHeight = 0; // 0 = expanded
+  const fitHeight = (h) => {
+    win.setSize(cfg.width, h);
+    dock();
+  };
+  ipcMain.on('leveling:collapse', (_e, { collapsed, headerHeight } = {}) => {
+    collapsedHeight = collapsed ? Math.max(30, Math.min(cfg.height, Math.ceil(Number(headerHeight) || 44))) : 0;
+    fitHeight(collapsedHeight || cfg.height);
+  });
+  // The opacity popover needs the full height while the panel is collapsed.
+  ipcMain.on('settings:hover', (e, open) => {
+    if (e.sender === win.webContents && collapsedHeight) fitHeight(open ? cfg.height : collapsedHeight);
+  });
   if (cfg.toggleHotkey) {
     globalShortcut.register(cfg.toggleHotkey, () => (win.isVisible() ? win.hide() : (dock(), win.showInactive())));
   }

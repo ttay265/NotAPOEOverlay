@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
 <style>
   html, body { margin: 0; background: transparent; font: 13px/1.4 "Segoe UI", sans-serif; color: #e8e2d0; user-select: none; overflow: hidden; }
-  .card { margin: 4px; padding: 10px 12px; background: rgba(18, 14, 10, var(--bg-alpha, 0.6)); border: 1px solid #6b5a3a; border-radius: 6px; }
+  .card { margin: 4px; padding: 10px 12px; background: rgba(18, 14, 10, var(--bg-alpha, 0.35)); border: 1px solid #6b5a3a; border-radius: 6px; }
   .name { font-size: 15px; font-weight: 600; }
   .Unique { color: #d98a3d; } .Rare { color: #e8d36a; } .Magic { color: #8888ff; }
   .Gem { color: #1ba29b; } .Currency { color: #c9b98b; } .Divination { color: #bfe3f5; }
@@ -51,10 +51,20 @@
   .age, .ilvl { color: #9a8f78; text-align: right; }
   .spinner { display: inline-block; width: 10px; height: 10px; border: 2px solid #6b5a3a; border-top-color: #e8d36a; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: -1px; margin-right: 6px; }
   @keyframes spin { to { transform: rotate(360deg); } }
+  /* opacity settings popover (renderer/settings.js) */
+  .gear { position: fixed; top: 7px; right: 8px; z-index: 5; background: transparent; color: #9a8f78; border: 0; padding: 0 3px; cursor: pointer; font: 13px "Segoe UI", sans-serif; line-height: 1; }
+  .gear:hover, .gear.on { color: #f0e6c8; }
+  .pop { position: fixed; top: 26px; right: 8px; z-index: 6; width: 220px; padding: 8px 10px; background: rgb(24, 19, 13); border: 1px solid #8a7550; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,.5); font-size: 12px; color: #e8e2d0; }
+  .pop label { display: flex; justify-content: space-between; color: #b8ad92; margin-top: 4px; }
+  .pop label:first-child { margin-top: 0; }
+  .pop input[type=range] { width: 100%; margin: 2px 0 4px; accent-color: #c8a050; cursor: pointer; }
+  .pop .note { color: #7d735f; font-size: 11px; }
+  .card > :first-child { padding-right: 18px; }
 </style>
 </head>
 <body>
   <div class="card" id="card"><div class="meta">Hover an item in game and press Ctrl+C (Ctrl+Alt+C shows roll ranges).</div></div>
+  <script src="settings.js"></script>
   <script src="renderer.js"></script>
 </body>
 </html>
