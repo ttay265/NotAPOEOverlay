@@ -69,8 +69,8 @@ For the zone you are in, it shows:
   but you have not ticked are listed under "did you get these?". Type `/passives` in game chat to
   check what the game says you have (24 in total when you kill all three bandits).
 
-**‹ ›** move the guide one zone back or forward if it ever gets out of step, **–** hides the panel,
-**Ctrl+Shift+L** shows or hides it, and **New run** (click twice) starts over for a new character.
+**‹ ›** move the guide one zone back or forward if it ever gets out of step, **–** folds the panel down to its header bar (**+** opens it again),
+**Ctrl+Shift+L** hides or shows it completely, and **New run** (click twice) starts over for a new character.
 Going to town, your hideout or an optional zone never moves the guide forward on its own.
 Progress is saved between sessions.
 
@@ -78,8 +78,15 @@ Progress is saved between sessions.
 
 | Setting | Default | Meaning |
 |---|---|---|
-| `opacity` | `0.6` | Background opacity of both panels, from `0.1` (almost see-through) to `1` (solid). Text stays fully readable. |
+| `opacity` | `0.35` | Starting background opacity of both panels, from `0` (no background) to `1` (solid). Text stays fully readable. Once you move the slider in game, the slider value wins. |
+| `panelOpacity` | `1` | Starting opacity of the whole panel, text included (`0.2` to `1`). |
 | `position` | `"top-left"` | Where the price-check panel shows: a corner (`top-left`, `top-right`, `bottom-left`, `bottom-right`) or `cursor` (next to the mouse). When it shares a corner with the leveling panel it sits right beside it. |
+
+**Changing it in game:** click the **⚙** in the top-right corner of either panel. *Background* changes
+how see-through the panel's background is, *Whole panel* fades the text too. Both panels change
+live and the values are saved in `overlay-settings.json` in the app's user data folder
+(`%APPDATA%\poe-overlay-prototype`), so they survive restarts and git pulls. Delete that file to go
+back to the `config.json` values.
 
 ### Settings (`config.json`, `leveling` section)
 
@@ -91,7 +98,6 @@ Progress is saved between sessions.
 | `bandit` | `"kill_all"` | `kill_all` (one extra passive point), or `alira`, `kraityn`, `oak` to help one. |
 | `library` | `false` | Include the Act 3 Library side trip. |
 | `corner` | `"top-left"` | Where the panel docks: `top-left`, `top-right`, `bottom-left`, `bottom-right`. |
-| `opacity` | same as `overlay.opacity` | Background opacity of this panel only. |
 | `toggleHotkey` | `"Ctrl+Shift+L"` | Show or hide the panel. |
 
 ### Try it without the game

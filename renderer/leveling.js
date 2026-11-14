@@ -1,7 +1,4 @@
 'use strict';
-// Panel background opacity from config.json (overlay.opacity), passed by the main process in the URL.
-const bgAlpha = Number(new URLSearchParams(location.search).get('opacity'));
-if (Number.isFinite(bgAlpha) && bgAlpha > 0) document.documentElement.style.setProperty('--bg-alpha', String(bgAlpha));
 // Builds the panel with DOM nodes and textContent only, so route or log text can never inject HTML.
 
 const body = document.getElementById('body');
@@ -120,4 +117,14 @@ function render(v) {
 window.leveling.onUpdate(render);
 document.getElementById('prev').onclick = () => window.leveling.step(-1);
 document.getElementById('next').onclick = () => window.leveling.step(1);
-document.getElementById('hide').onclick = () => window.leveling.hide();
+const hideBtn = document.getElementById('hide');
+const card = document.querySelector('.card');
+hideBtn.onclick = () => {
+  const collapsed = !card.classList.contains('collapsed');
+  card.classList.toggle('collapsed', collapsed);
+  hideBtn.textContent = collapsed ? '+' : '–';
+  hideBtn.title = collapsed ? 'Expand' : 'Collapse to the header (Ctrl+Shift+L hides completely)';
+  // header + card margins and border
+  const headerHeight = document.querySelector('.head').getBoundingClientRect().height + 10;
+  window.leveling.collapse(collapsed, headerHeight);
+};

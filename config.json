@@ -4,7 +4,7 @@
   "pollMs": 250,
   "toggleHotkey": "Ctrl+Shift+Space",
   "overlay": {
-    "opacity": 0.6,
+    "opacity": 0.35,
     "position": "top-left"
   },
   "leveling": {

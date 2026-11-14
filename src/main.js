@@ -12,7 +12,8 @@ const { PriceService, tradeSearchUrl } = require('./pricing');
 const { setupLeveling } = require('./leveling/window');
 const { TradePriceCheck } = require('./trade/pricecheck');
 const { TradeClient, StaleError } = require('./trade/client');
-const { CORNERS, clampOpacity, dockPosition, priceOffsetX } = require('./layout');
+const { CORNERS, dockPosition, priceOffsetX } = require('./layout');
+const { OverlaySettings } = require('./settings');
 
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
 const config = Object.assign(
@@ -36,7 +37,7 @@ const trade = new TradePriceCheck({
 const WIDTH = { basic: 340, trade: 440 };
 // overlay.position: a screen corner (default top-left) or "cursor" (old behaviour: next to the mouse).
 const overlayCfg = Object.assign({ opacity: 0.6, position: 'top-left' }, config.overlay || {});
-const OPACITY = clampOpacity(overlayCfg.opacity);
+let settings; // OverlaySettings, created once Electron knows the user data folder
 const PRICE_POS = overlayCfg.position === 'cursor' || CORNERS.includes(overlayCfg.position) ? overlayCfg.position : 'top-left';
 
 let win;
@@ -54,7 +55,9 @@ function createWindow() {
   // 'screen-saver' level keeps us above a borderless-windowed game.
   win.setAlwaysOnTop(true, 'screen-saver');
   win.setVisibleOnAllWorkspaces(true);
-  win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'), { query: { opacity: String(OPACITY) } });
+  const s = settings.get();
+  win.setOpacity(s.panelOpacity);
+  win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'), { query: { bg: String(s.bgOpacity), panel: String(s.panelOpacity) } });
 }
 
 function showPanel() {
@@ -157,8 +160,26 @@ function strip(item) {
 }
 
 app.whenReady().then(() => {
+  settings = new OverlaySettings(path.join(app.getPath('userData'), 'overlay-settings.json'), overlayCfg);
   createWindow();
-  if (config.leveling && config.leveling.enabled !== false) setupLeveling({ opacity: OPACITY, ...config.leveling });
+  if (config.leveling && config.leveling.enabled !== false) setupLeveling(config.leveling, settings.get());
+
+  // Opacity popover (either panel): apply live to every overlay window and save.
+  ipcMain.on('settings:set', (_e, patch) => {
+    const s = settings.set(patch);
+    for (const w of BrowserWindow.getAllWindows()) {
+      if (w.isDestroyed()) continue;
+      w.setOpacity(s.panelOpacity);
+      w.webContents.send('settings', s);
+    }
+  });
+  // Keep the price panel open while its popover is open.
+  ipcMain.on('settings:hover', (e, on) => {
+    if (e.sender !== win.webContents) return;
+    clearTimeout(hideTimer);
+    if (!on) armHide();
+  });
+  app.on('will-quit', () => settings.flush());
   lastClip = clipboard.readText();
   setInterval(() => {
     const t = clipboard.readText();

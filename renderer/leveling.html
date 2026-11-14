@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
 <style>
   html, body { margin: 0; height: 100%; background: transparent; font: 12.5px/1.4 "Segoe UI", sans-serif; color: #e8e2d0; user-select: none; overflow: hidden; }
-  .card { box-sizing: border-box; margin: 4px; max-height: calc(100% - 8px); display: flex; flex-direction: column; background: rgba(18, 14, 10, var(--bg-alpha, 0.6)); border: 1px solid #6b5a3a; border-radius: 6px; }
+  .card { box-sizing: border-box; margin: 4px; max-height: calc(100% - 8px); display: flex; flex-direction: column; background: rgba(18, 14, 10, var(--bg-alpha, 0.35)); border: 1px solid #6b5a3a; border-radius: 6px; }
   .head { display: flex; align-items: center; gap: 6px; padding: 7px 10px 5px; border-bottom: 1px solid #3a3020; }
   .title { flex: 1; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9a8f78; }
   .btn { background: #3a2f1f; color: #e8e2d0; border: 1px solid #6b5a3a; border-radius: 4px; padding: 1px 7px; cursor: pointer; font: inherit; }
@@ -37,6 +37,16 @@
   .q .what { display: block; color: #a99f86; font-size: 11.5px; }
   .q.done .what { display: none; }
   .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; color: #7d7563; font-size: 11px; }
+  .card.collapsed .body { display: none; }
+  .card.collapsed .head { border-bottom: 0; }
+  /* opacity settings popover (renderer/settings.js) */
+  .gear { position: fixed; top: 7px; right: 8px; z-index: 5; background: transparent; color: #9a8f78; border: 0; padding: 0 3px; cursor: pointer; font: 13px "Segoe UI", sans-serif; line-height: 1; }
+  .gear:hover, .gear.on { color: #f0e6c8; }
+  .pop { position: fixed; top: 26px; right: 8px; z-index: 6; width: 220px; padding: 8px 10px; background: rgb(24, 19, 13); border: 1px solid #8a7550; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,.5); font-size: 12px; color: #e8e2d0; }
+  .pop label { display: flex; justify-content: space-between; color: #b8ad92; margin-top: 4px; }
+  .pop label:first-child { margin-top: 0; }
+  .pop input[type=range] { width: 100%; margin: 2px 0 4px; accent-color: #c8a050; cursor: pointer; }
+  .pop .note { color: #7d735f; font-size: 11px; }
 </style>
 </head>
 <body>
@@ -45,10 +55,12 @@
       <span class="title" id="title">Leveling</span>
       <button class="btn" id="prev" title="Back one zone">‹</button>
       <button class="btn" id="next" title="Forward one zone">›</button>
-      <button class="btn" id="hide" title="Hide (Ctrl+Shift+L)">–</button>
+      <button class="btn" id="hide" title="Collapse to the header (Ctrl+Shift+L hides completely)">–</button>
+      <span style="width:16px"></span>
     </div>
     <div class="body" id="body"><div class="meta">Waiting for Client.txt…</div></div>
   </div>
+  <script src="settings.js"></script>
   <script src="leveling.js"></script>
 </body>
 </html>
