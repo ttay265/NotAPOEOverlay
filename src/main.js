@@ -14,6 +14,7 @@ const { TradePriceCheck } = require('./trade/pricecheck');
 const { TradeClient, StaleError } = require('./trade/client');
 const { CORNERS, dockPosition, priceOffsetX } = require('./layout');
 const { OverlaySettings } = require('./settings');
+const { initLog, log } = require('./log');
 
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
 const config = Object.assign(
@@ -57,6 +58,9 @@ function createWindow() {
   win.setVisibleOnAllWorkspaces(true);
   const s = settings.get();
   win.setOpacity(s.panelOpacity);
+  win.webContents.on('console-message', (_e, level, msg, line, src) => { if (level >= 2) log('price panel error:', msg, `${src}:${line}`); });
+  win.webContents.on('render-process-gone', (_e, d) => log('price panel crashed:', d.reason));
+  win.webContents.on('preload-error', (_e, _p, err) => log('price panel preload error:', String(err)));
   win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'), { query: { bg: String(s.bgOpacity), panel: String(s.panelOpacity) } });
 }
 
@@ -74,6 +78,7 @@ function showPanel() {
     win.setPosition(x, y);
   }
   win.showInactive(); // never take focus from the game
+  log('panel shown at', win.getBounds());
   armHide();
 }
 
@@ -104,6 +109,8 @@ function resizePanel(width, height) {
 
 async function onClipboard(text) {
   const item = parseItem(text);
+  const first = String(text || '').replace(/\r/g, '').trim().split('\n')[0].slice(0, 60);
+  log('clipboard changed:', { chars: (text || '').length, firstLine: first, item: item ? `${item.rarity} ${item.baseType}` : null });
   if (!item) return;
   clearTimeout(autoSearchTimer);
   trade.cancel();
@@ -160,6 +167,8 @@ function strip(item) {
 }
 
 app.whenReady().then(() => {
+  initLog(path.join(app.getPath('userData'), 'overlay.log'));
+  log('overlay started', { version: app.getVersion(), league: config.league, position: PRICE_POS, primary: screen.getPrimaryDisplay().workArea });
   settings = new OverlaySettings(path.join(app.getPath('userData'), 'overlay-settings.json'), overlayCfg);
   createWindow();
   if (config.leveling && config.leveling.enabled !== false) setupLeveling(config.leveling, settings.get());
@@ -185,11 +194,13 @@ app.whenReady().then(() => {
     const t = clipboard.readText();
     if (t !== lastClip) {
       lastClip = t;
-      onClipboard(t);
+      onClipboard(t).catch((err) => log('price check failed:', String((err && err.stack) || err)));
     }
   }, config.pollMs);
 
-  globalShortcut.register(config.toggleHotkey, () => (win.isVisible() ? hidePanel() : showPanel()));
+  log('log file:', path.join(app.getPath('userData'), 'overlay.log'));
+  const toggled = globalShortcut.register(config.toggleHotkey, () => (win.isVisible() ? hidePanel() : showPanel()));
+  if (!toggled) log('could not register hotkey (another app may own it):', config.toggleHotkey);
   ipcMain.on('hide', () => hidePanel());
   ipcMain.on('open-trade', (_e, url) => {
     if (typeof url === 'string' && url.startsWith('https://www.pathofexile.com/trade/')) shell.openExternal(url);
