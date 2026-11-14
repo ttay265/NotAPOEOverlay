@@ -53,7 +53,7 @@ The panel hides after 10 seconds, or when you click Close. **Ctrl+Shift+Space** 
 
 ## Leveling helper
 
-A panel in the top-right corner that follows your campaign run. It reads the game's own log file
+A panel in the top-left corner that follows your campaign run. It reads the game's own log file
 (`logs/Client.txt` in the Path of Exile folder) to see which zone you just entered and your
 character level. It never reads game memory and never presses keys for you.
 
@@ -74,6 +74,13 @@ For the zone you are in, it shows:
 Going to town, your hideout or an optional zone never moves the guide forward on its own.
 Progress is saved between sessions.
 
+### Look and position (`config.json`, `overlay` section)
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `opacity` | `0.6` | Background opacity of both panels, from `0.1` (almost see-through) to `1` (solid). Text stays fully readable. |
+| `position` | `"top-left"` | Where the price-check panel shows: a corner (`top-left`, `top-right`, `bottom-left`, `bottom-right`) or `cursor` (next to the mouse). When it shares a corner with the leveling panel it sits right beside it. |
+
 ### Settings (`config.json`, `leveling` section)
 
 | Setting | Default | Meaning |
@@ -83,7 +90,8 @@ Progress is saved between sessions.
 | `leagueStart` | `true` | Include league-start extras: trials, flask and gem pickups. |
 | `bandit` | `"kill_all"` | `kill_all` (one extra passive point), or `alira`, `kraityn`, `oak` to help one. |
 | `library` | `false` | Include the Act 3 Library side trip. |
-| `corner` | `"top-right"` | Where the panel docks: `top-left`, `top-right`, `bottom-left`, `bottom-right`. |
+| `corner` | `"top-left"` | Where the panel docks: `top-left`, `top-right`, `bottom-left`, `bottom-right`. |
+| `opacity` | same as `overlay.opacity` | Background opacity of this panel only. |
 | `toggleHotkey` | `"Ctrl+Shift+L"` | Show or hide the panel. |
 
 ### Try it without the game

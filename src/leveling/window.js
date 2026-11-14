@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const { ClientLogWatcher, findLogPath } = require('./clientlog');
 const { LevelingTracker } = require('./tracker');
+const { clampOpacity, dockPosition } = require('../layout');
 
 const DEFAULTS = {
   enabled: true,
@@ -14,9 +15,10 @@ const DEFAULTS = {
   leagueStart: true, // include league-start extras (flasks, trials, early gems)
   bandit: 'kill_all', // kill_all | alira | kraityn | oak
   library: false, // include the Act 3 Library side trip
-  corner: 'top-right', // top-left | top-right | bottom-left | bottom-right
+  corner: 'top-left', // top-left | top-right | bottom-left | bottom-right
   width: 340,
   height: 460,
+  opacity: 0.6, // panel background opacity, 0.1 (see-through) to 1 (solid)
   toggleHotkey: 'Ctrl+Shift+L',
 };
 
@@ -36,14 +38,11 @@ function setupLeveling(userConfig = {}) {
   });
   win.setAlwaysOnTop(true, 'screen-saver');
   win.setVisibleOnAllWorkspaces(true);
-  win.loadFile(path.join(__dirname, '..', '..', 'renderer', 'leveling.html'));
+  win.loadFile(path.join(__dirname, '..', '..', 'renderer', 'leveling.html'), { query: { opacity: String(clampOpacity(cfg.opacity)) } });
 
   const dock = () => {
-    const area = screen.getPrimaryDisplay().workArea;
-    const [w, h] = win.getSize();
-    const right = cfg.corner.includes('right');
-    const bottom = cfg.corner.includes('bottom');
-    win.setPosition(right ? area.x + area.width - w - 8 : area.x + 8, bottom ? area.y + area.height - h - 8 : area.y + 120);
+    const { x, y } = dockPosition(screen.getPrimaryDisplay().workArea, win.getSize(), cfg.corner);
+    win.setPosition(x, y);
   };
 
   let logStatus = { file: null, error: null };

@@ -12,6 +12,7 @@ const { PriceService, tradeSearchUrl } = require('./pricing');
 const { setupLeveling } = require('./leveling/window');
 const { TradePriceCheck } = require('./trade/pricecheck');
 const { TradeClient, StaleError } = require('./trade/client');
+const { CORNERS, clampOpacity, dockPosition, priceOffsetX } = require('./layout');
 
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
 const config = Object.assign(
@@ -33,6 +34,10 @@ const trade = new TradePriceCheck({
   client: new TradeClient({ fetchImpl: (url, init) => net.fetch(url, init), maxWaitMs: tradeCfg.maxWaitSec * 1000 }),
 });
 const WIDTH = { basic: 340, trade: 440 };
+// overlay.position: a screen corner (default top-left) or "cursor" (old behaviour: next to the mouse).
+const overlayCfg = Object.assign({ opacity: 0.6, position: 'top-left' }, config.overlay || {});
+const OPACITY = clampOpacity(overlayCfg.opacity);
+const PRICE_POS = overlayCfg.position === 'cursor' || CORNERS.includes(overlayCfg.position) ? overlayCfg.position : 'top-left';
 
 let win;
 let lastClip = '';
@@ -49,16 +54,22 @@ function createWindow() {
   // 'screen-saver' level keeps us above a borderless-windowed game.
   win.setAlwaysOnTop(true, 'screen-saver');
   win.setVisibleOnAllWorkspaces(true);
-  win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'));
+  win.loadFile(path.join(__dirname, '..', 'renderer', 'index.html'), { query: { opacity: String(OPACITY) } });
 }
 
-function showNearCursor() {
-  const p = screen.getCursorScreenPoint();
-  const area = screen.getDisplayNearestPoint(p).workArea;
+function showPanel() {
   const [w, h] = win.getSize();
-  const x = Math.min(p.x + 24, area.x + area.width - w);
-  const y = Math.min(Math.max(p.y - h / 2, area.y), area.y + area.height - h);
-  win.setPosition(Math.round(x), Math.round(y));
+  if (PRICE_POS === 'cursor') {
+    const p = screen.getCursorScreenPoint();
+    const area = screen.getDisplayNearestPoint(p).workArea;
+    const x = Math.min(p.x + 24, area.x + area.width - w);
+    const y = Math.min(Math.max(p.y - h / 2, area.y), area.y + area.height - h);
+    win.setPosition(Math.round(x), Math.round(y));
+  } else {
+    const area = screen.getPrimaryDisplay().workArea;
+    const { x, y } = dockPosition(area, [w, h], PRICE_POS, { offsetX: priceOffsetX(PRICE_POS, config.leveling) });
+    win.setPosition(x, y);
+  }
   win.showInactive(); // never take focus from the game
   armHide();
 }
@@ -99,7 +110,7 @@ async function onClipboard(text) {
   win.setSize(prep ? WIDTH.trade : WIDTH.basic, win.getSize()[1]);
   const ninjaPriced = !(item.rarity === 'Rare' || item.rarity === 'Magic');
   win.webContents.send('item', { ...base, status: ninjaPriced ? 'loading' : 'unpriced' });
-  showNearCursor();
+  showPanel();
 
   // The Ctrl+C the player pressed is the one action that triggers one search (debounced, so
   // copying several items quickly only searches the last one).
@@ -147,7 +158,7 @@ function strip(item) {
 
 app.whenReady().then(() => {
   createWindow();
-  if (config.leveling && config.leveling.enabled !== false) setupLeveling(config.leveling);
+  if (config.leveling && config.leveling.enabled !== false) setupLeveling({ opacity: OPACITY, ...config.leveling });
   lastClip = clipboard.readText();
   setInterval(() => {
     const t = clipboard.readText();
@@ -157,7 +168,7 @@ app.whenReady().then(() => {
     }
   }, config.pollMs);
 
-  globalShortcut.register(config.toggleHotkey, () => (win.isVisible() ? hidePanel() : showNearCursor()));
+  globalShortcut.register(config.toggleHotkey, () => (win.isVisible() ? hidePanel() : showPanel()));
   ipcMain.on('hide', () => hidePanel());
   ipcMain.on('open-trade', (_e, url) => {
     if (typeof url === 'string' && url.startsWith('https://www.pathofexile.com/trade/')) shell.openExternal(url);

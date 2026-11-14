@@ -1,4 +1,7 @@
 'use strict';
+// Panel background opacity from config.json (overlay.opacity), passed by the main process in the URL.
+const bgAlpha = Number(new URLSearchParams(location.search).get('opacity'));
+if (Number.isFinite(bgAlpha) && bgAlpha > 0) document.documentElement.style.setProperty('--bg-alpha', String(bgAlpha));
 // Price-check panel: poe.ninja price for most items, plus a mod picker and trade API search
 // for rares, magic items and uniques.
 const card = document.getElementById('card');

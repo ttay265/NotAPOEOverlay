@@ -3,13 +3,17 @@
   "hideAfterMs": 10000,
   "pollMs": 250,
   "toggleHotkey": "Ctrl+Shift+Space",
+  "overlay": {
+    "opacity": 0.6,
+    "position": "top-left"
+  },
   "leveling": {
     "enabled": true,
     "clientLog": "",
     "leagueStart": true,
     "bandit": "kill_all",
     "library": false,
-    "corner": "top-right",
+    "corner": "top-left",
     "toggleHotkey": "Ctrl+Shift+L"
   },
   "trade": {
