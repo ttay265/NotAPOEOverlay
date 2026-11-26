@@ -38,6 +38,25 @@ How it avoids getting you blocked by the trade API:
 - The same search within 5 minutes comes from cache, and the Search button ignores presses while a
   search is running and more than one per second.
 
+## Merc price check (Mercenaries)
+
+Open a mercenary hire window in a map and press **Ctrl+Shift+M**. The overlay takes one screenshot,
+reads the merc's type, level and skills with OCR, counts the support gems next to each skill, and runs
+one trade search for Mercenary Warrants with the same skills. A panel in the top-right corner shows:
+
+- value hints: travel skill or not (mercs without one usually sell for more), level, Infamous,
+  fully linked skills, Trarthus skills;
+- the skills used in the search (untick one to widen it), and "Only mercs without a travel skill";
+- how many comparable warrants are listed, the cheapest and median price, and the first 10 listings.
+  "Open trade site" opens the same search in your browser so you can add support gems there.
+
+Ctrl+C on a Mercenary Warrant item also opens this panel (the warrant text format is not confirmed yet).
+
+Settings (`config.json`, `merc` section): `hotkey`, `corner`, `autoSearch`, and `layout`
+(`offsetX`, `offsetY`, `scale` as fractions of the screen height) to nudge the OCR regions if your
+UI is laid out differently. Nothing is sent to the game: the screenshot is read in memory, the same way
+a player looks at the screen.
+
 ## Run it on Windows
 
 1. Install Node.js 20 or newer from https://nodejs.org.

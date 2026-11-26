@@ -16,6 +16,12 @@
     "corner": "top-left",
     "toggleHotkey": "Ctrl+Shift+L"
   },
+  "merc": {
+    "enabled": true,
+    "hotkey": "Ctrl+Shift+M",
+    "corner": "top-right",
+    "autoSearch": true
+  },
   "trade": {
     "enabled": true,
     "autoSearch": true,

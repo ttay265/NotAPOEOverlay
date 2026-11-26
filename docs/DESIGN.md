@@ -85,3 +85,24 @@ current instance; showing the real exit would need screen reading, which can com
 - Unique variants (for example different versions of the same unique) take the first match.
 - Not tested on Windows yet; built and screenshot-tested on Linux with Electron 33.
 - Leveling helper: tested with a sample Client.txt in the documented line format, not yet against a live game log.
+
+## 8. Merc price check
+
+Mercenaries are traded as **Mercenary Warrants**. The trade site indexes every merc skill and support
+gem as a stat in the `mercenary` group (`mercenary.skill_<n>`, `mercenary.support_<n>`); an `and` group
+requires skills, a `not` group rejects them. Ids are in `data/merc/catalog.json` (from the trade API
+stats list and poedb's archetype list, snapshot 2026-11-21).
+
+**Why screen reading and not Ctrl+C:** the hire window is not an item, so the game copies no text for it,
+and game memory is off limits. The hotkey takes one screenshot (Electron `desktopCapturer`), crops the
+header and the skill-name column at fixed positions (the window is centred and scales with screen
+height), thresholds them to dark-on-white and runs Tesseract (tesseract.js, WebAssembly, English model
+bundled). OCR text is fuzzy-matched against the catalog, so a few wrong letters still give the right
+skill. Support gems are icons, so they are counted by brightness of each slot, not named.
+
+**Search:** every non-travel skill is required. If the merc has no travel skill (Flame Dash, Frostblink,
+Leap Slam, Lightning Warp, ...), warrants with one are excluded, because "no travel skill" is a big part of
+the price. Sorted by price, priced listings only. Same rate-limited client as the rare price check.
+
+Limits: supports are not identified (refine on the trade site); level and Infamous are shown but not
+filtered (no confirmed trade filter yet); tested on one 2560x1600 screenshot only.
