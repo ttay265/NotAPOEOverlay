@@ -10,6 +10,7 @@ const fs = require('fs');
 const { parseItem } = require('./parser');
 const { PriceService, tradeSearchUrl } = require('./pricing');
 const { setupLeveling } = require('./leveling/window');
+const { setupMerc } = require('./merc/window');
 const { TradePriceCheck } = require('./trade/pricecheck');
 const { TradeClient, StaleError } = require('./trade/client');
 const { CORNERS, dockPosition, priceOffsetX } = require('./layout');
@@ -42,6 +43,7 @@ let settings; // OverlaySettings, created once Electron knows the user data fold
 const PRICE_POS = overlayCfg.position === 'cursor' || CORNERS.includes(overlayCfg.position) ? overlayCfg.position : 'top-left';
 
 let win;
+let merc = null; // merc price check panel (src/merc/window.js)
 let lastClip = '';
 let hideTimer;
 let autoSearchTimer;
@@ -108,6 +110,7 @@ function resizePanel(width, height) {
 }
 
 async function onClipboard(text) {
+  if (merc && merc.fromClipboard(text)) return; // Ctrl+C on a Mercenary Warrant
   const item = parseItem(text);
   const first = String(text || '').replace(/\r/g, '').trim().split('\n')[0].slice(0, 60);
   log('clipboard changed:', { chars: (text || '').length, firstLine: first, item: item ? `${item.rarity} ${item.baseType}` : null });
@@ -172,6 +175,13 @@ app.whenReady().then(() => {
   settings = new OverlaySettings(path.join(app.getPath('userData'), 'overlay-settings.json'), overlayCfg);
   createWindow();
   if (config.leveling && config.leveling.enabled !== false) setupLeveling(config.leveling, settings.get());
+  if (!config.merc || config.merc.enabled !== false) {
+    try {
+      merc = setupMerc(config.merc || {}, { league: config.league, trade, status: tradeCfg.status, log, look: settings.get() });
+    } catch (err) {
+      log('merc price check disabled:', String((err && err.stack) || err));
+    }
+  }
 
   // Opacity popover (either panel): apply live to every overlay window and save.
   ipcMain.on('settings:set', (_e, patch) => {

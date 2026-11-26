@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+<style>
+  html, body { margin: 0; background: transparent; font: 12.5px/1.4 "Segoe UI", sans-serif; color: #e8e2d0; user-select: none; overflow: hidden; }
+  .card { box-sizing: border-box; margin: 4px; background: rgba(18, 14, 10, var(--bg-alpha, 0.35)); border: 1px solid #6b5a3a; border-radius: 6px; padding: 8px 10px 10px; }
+  .head { display: flex; align-items: center; gap: 6px; }
+  .title { flex: 1; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9a8f78; }
+  .name { font-size: 16px; font-weight: 600; color: #f0e6c8; margin-top: 4px; }
+  .meta { color: #9a8f78; font-size: 11.5px; }
+  .btn, button { background: #3a2f1f; color: #e8e2d0; border: 1px solid #6b5a3a; border-radius: 4px; padding: 2px 8px; cursor: pointer; font: inherit; }
+  button:hover { background: #4d3e28; } button.primary { border-color: #c8a050; }
+  .hints { margin: 6px 0 2px; padding: 0; list-style: none; }
+  .hints li { font-size: 12px; } .hints .good { color: #7fd38a; } .hints .bad { color: #e0a050; }
+  h4 { margin: 8px 0 3px; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #9a8f78; font-weight: 600; }
+  label.skill { display: flex; gap: 6px; align-items: center; padding: 1px 0; cursor: pointer; }
+  label.skill.off .sn { color: #7d7563; text-decoration: line-through; }
+  .sn { flex: 1; } .links { color: #c8a050; font-size: 11.5px; } .travel { color: #e0a050; font-size: 11px; }
+  .row { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .status { margin-top: 6px; color: #a99f86; font-size: 12px; } .err { color: #e06060; }
+  .sum { margin-top: 6px; font-size: 14px; } .sum b { color: #f0c040; }
+  table { width: 100%; border-collapse: collapse; margin-top: 4px; font-size: 12px; }
+  td { padding: 1px 4px 1px 0; } td.p { color: #f0e6c8; white-space: nowrap; } td.a { color: #9a8f78; overflow: hidden; text-overflow: ellipsis; max-width: 150px; white-space: nowrap; }
+  .note { color: #7d7563; font-size: 11px; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="card" id="card"><div class="head"><span class="title">Merc price check</span></div><div class="status">Open a merc hire window and press the hotkey.</div></div>
+  <script src="merc.js"></script>
+</body>
+</html>
